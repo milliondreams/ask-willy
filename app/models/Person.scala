@@ -14,7 +14,7 @@ import anorm._
 import anorm.SqlParser._
 
 
-case class People(id:Long,
+case class Person(//id:Long,
                   name:String,
                   email:String,
                   designation:String,
@@ -28,10 +28,10 @@ case class People(id:Long,
 
                    )
 
-object People{
+object Person{
 
   def simple={
-    get[Long]("id")~
+//    get[Long]("id")~
     get[String]("name")~
     get[String]("email")~
     get[String]("designation")~
@@ -42,12 +42,12 @@ object People{
 //    get("formal_resume")~
     get[String]("location")~
     get[Boolean]("employee")map{
-      case id~name~email~designation~gender~experience~available~location~employee=>People(id,name,email,designation,gender,experience,available,location,employee)
+      case name~email~designation~gender~experience~available~location~employee=>Person(name,email,designation,gender,experience,available,location,employee)
     }
 
   }
 
-  def addPerson(ppl:People):Option[Long]={
+  def addPerson(ppl:Person):Option[Long]={
     DB.withConnection{implicit connection=>
     val id=SQL("INSERT INTO people(name,email,designation,gender,experience,available,location,employee) VALUES ({name},{email},{designation},{gender},{experience},{available},{location},{employee}) ")
         .on(
@@ -64,19 +64,44 @@ object People{
     }
   }
 
-  //edit fields
-
-  def getAll:Seq[People]={
+  def getAll:Seq[Person]={
     DB.withConnection{implicit connection=>
       SQL("SELECT * FROM people")
-        .as(People.simple *)
+        .as(Person.simple *)
     }
   }
 
-  def getAllEmployees:Seq[People]={
+  def getAllEmployees:Seq[Person]={
     DB.withConnection{implicit connection=>
       SQL("SELECT * FROM people where employee=true")
-        .as(People.simple *)
+        .as(Person.simple *)
     }
   }
+  def findPerson(emailId:String):Option[Person]={
+    DB.withConnection{implicit connection=>
+      SQL("SELECT * FROM people where email={email}")
+        .on(
+      'email->emailId
+      )
+        .as(Person.simple.singleOpt)
+    }
+  }
+  def findPersonById(personId:Long):Option[Person]={
+    DB.withConnection{implicit connection=>
+      SQL("SELECT * FROM people where id={id}")
+        .on(
+      'id->personId
+      )
+        .as(Person.simple.singleOpt)
+    }
+  }
+  def removePersonById(personId:Long):Boolean={
+    DB.withConnection{implicit connection=>
+      SQL("DELETE FROM people where id={id}")
+        .on(
+      'id->personId
+      ).execute()
+    }
+  }
+
 }

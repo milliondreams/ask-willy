@@ -1,5 +1,3 @@
-package models
-
 /**
  * Created with IntelliJ IDEA.
  * User: shiti
@@ -7,7 +5,48 @@ package models
  * Time: 1:45 PM
  * To change this template use File | Settings | File Templates.
  */
+package models
 
-class PeopleSpec {
+import org.specs2.mutable._
+import play.api.test._
+import play.api.test.Helpers._
+import utils.MyHelpers
 
+import org.h2.tools.Server;
+
+class PeopleSpec extends Specification{
+  val person:People = People(id = 1,
+    name = "test",
+    email="test@test.com",
+    designation = "Dev Engineer",
+    gender = "male",
+    experience = 1.0,
+    available = true,
+    location = "hyderabad",
+    employee = true
+  )
+  "People person " should {
+
+    "have a name as test" in {
+       person.name must beEqualTo("test")
+    }
+
+    "be saved in a db" in {
+      // start the TCP Server
+
+
+      running(FakeApplication(additionalConfiguration = inMemoryDatabase())){
+        def server:Server  = Server.createTcpServer("-tcpAllowOthers").start();
+        MyHelpers.evolutionFor("default")
+
+         def result = People.addPerson(person) must beEqualTo(1)
+
+        server.stop();
+        // stop the TCP Server
+
+        result
+      }
+
+    }
+  }
 }

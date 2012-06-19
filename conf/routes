@@ -7,3 +7,22 @@ GET     /                           controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Map people operations
+GET     /people                           controllers.People.getAllPeople
+
+GET     /people/:emailId                  controllers.People.getPerson(emailId:String)
+
+GET     /people/:id                       controllers.People.getPersonById(id:Long)
+
+POST    /people                           controllers.People.postPerson
+
+POST    /people/:id/skill                controllers.People.postSkill(id:Long)
+
+POST    /people/:id/qualification                controllers.People.postQualification(id:Long)
+
+POST    /people/:id/employment                controllers.People.postEmployment(id:Long)
+
+POST    /people/:id/manager                controllers.People.postManagerDetails(id:Long)
+
+DELETE  /people/:id                       controllers.People.deletePerson(id:Long)

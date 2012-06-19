@@ -12,7 +12,7 @@ import play.api.Play
  * To change this template use File | Settings | File Templates.
  */
 
-class MyHelpers {
+object MyHelpers {
   def evolutionFor(dbName: String, path: java.io.File = new java.io.File(".")) {
     Play.current.plugin[DBPlugin].foreach {
       db =>
