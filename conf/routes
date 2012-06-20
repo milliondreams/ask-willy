@@ -11,7 +11,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # Map people operations
 GET     /people                           controllers.People.getAllPeople
 
-GET     /people/:emailId                  controllers.People.getPerson(emailId:String)
+GET     /people/:emailId                  controllers.People.getPersonByEmail(emailId:String)
 
 GET     /people/:id                       controllers.People.getPersonById(id:Long)
 
@@ -26,3 +26,20 @@ POST    /people/:id/employment                controllers.People.postEmployment(
 POST    /people/:id/manager                controllers.People.postManagerDetails(id:Long)
 
 DELETE  /people/:id                       controllers.People.deletePerson(id:Long)
+
+#Map project operations
+GET     /project                                   controllers.Projects.getAllProjects
+
+GET     /project/active                                   controllers.Projects.getAllActiveProjects
+
+GET     /project/closed                                   controllers.Projects.getAllClosedProjects
+
+GET     /project/pipeline                                   controllers.Projects.getAllPipelinedProjects
+
+GET     /project/:name                                      controllers.Projects.getProjectByName(name:String)
+
+GET     /project/:id                                      controllers.Projects.getProjectById(id:Long)
+
+POST    /project                                            controllers.Projects.postProject
+
+DELETE  /project/:id                                        controllers.Projects.deleteProject(id:Long)
