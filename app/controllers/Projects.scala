@@ -70,7 +70,7 @@ object Projects extends Controller {
     if (Project.removeProjectById(projectId))
       Ok(generate(removed))
     else
-      Ok("failed to remove project")
+      BadRequest("failed to remove project")
   }
 
 }

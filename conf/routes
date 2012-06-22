@@ -28,6 +28,7 @@ POST    /people/:id/manager                controllers.People.postManagerDetails
 DELETE  /people/:id                       controllers.People.deletePerson(id:Long)
 
 #Map project operations
+
 GET     /project                                   controllers.Projects.getAllProjects
 
 GET     /project/active                                   controllers.Projects.getAllActiveProjects
@@ -43,3 +44,29 @@ GET     /project/:id                                      controllers.Projects.g
 POST    /project                                            controllers.Projects.postProject
 
 DELETE  /project/:id                                        controllers.Projects.deleteProject(id:Long)
+
+#Map requirement operations
+
+GET     /requirements                                       controllers.Requirements.getAllReq
+
+GET     /requirements/priority/crucial                                       controllers.Requirements.getCrucialReq
+
+GET     /requirements/priority/normal                                       controllers.Requirements.getNormalReq
+
+GET     /requirements/priority/low                                       controllers.Requirements.getLowReq
+
+GET     /requirements/category/billed                                      controllers.Requirements.getBilledReq
+
+GET     /requirements/category/shadow                                       controllers.Requirements.getShadowReq
+
+GET     /requirements/category/pitch                                       controllers.Requirements.getPitchReq
+
+GET     /requirements/category/tentative                                       controllers.Requirements.getTentativeReq
+
+POST    /requirements                                       controllers.Requirements.postRequirement
+
+DELETE  /requirements/id:                                    controllers.Requirements.deleteRequirement(id:Long)
+
+#Map skills
+
+POST    /skills                                             controllers.Skills.postSkill

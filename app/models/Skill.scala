@@ -15,22 +15,22 @@ import anorm._
 import anorm.SqlParser._
 
 
-case class Skills(id:Long,skillName:String)
+case class Skill(skillName:String)
 
-object Skills{
+object Skill{
   def simple={
-    get[Long]("id")~
+//    get[Long]("id")~
     get[String]("skillName")map{
-      case id~skillName=> Skills(id,skillName)
+      case skillName=> Skill(skillName)
     }
   } 
   
-  def findById(id:Long):Option[Skills]={
+  def findById(id:Long):Option[Skill]={
     DB.withConnection{implicit connection=>
       SQL("SELECT * FROM skills WHERE id={id}")
       .on(
         'id->id
-      ).as(Skills.simple.singleOpt)
+      ).as(Skill.simple.singleOpt)
     }
   }
 
@@ -45,12 +45,12 @@ object Skills{
 
   }
 
-  def findByWords(keyWords:String):Seq[Skills]={
+  def findByWords(keyWords:String):Seq[Skill]={
     DB.withConnection{implicit connection=>
       SQL("SELECT * FROM skills WHERE skill_name LIKE '%{searchString}%'")
       .on(
         'searchString->keyWords
-      ).as(Skills.simple *)
+      ).as(Skill.simple *)
     }
   }
 }

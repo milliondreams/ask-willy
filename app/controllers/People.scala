@@ -110,13 +110,9 @@ object People extends Controller{
 
 
   /* GET */
-  def getPersonById(id:Long)=Action(parse.json){request=>
-    (request.body).asOpt[JsValue].map{person=>
-      Person.findPersonById((person\"id").as[Long])
-      Ok("get"+person.toString())
-    }.getOrElse{
-      BadRequest("No person with given id")
-    }
+  def getPersonById(personId:Long)=Action{
+      val person=Person.findPersonById(personId)
+      Ok(generate(person))
   }
 
   /* DELETE */
@@ -124,7 +120,7 @@ object People extends Controller{
       val removed=Person.findPersonById(personId)
       if (Person.removePersonById(personId))
         Ok(Json.toJson(generate(removed)))
-      else Ok("failed to remove person")
+      else BadRequest("failed to remove person")
 
   }
 
