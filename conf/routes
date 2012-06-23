@@ -65,7 +65,7 @@ GET     /requirements/category/tentative                                       c
 
 POST    /requirements                                       controllers.Requirements.postRequirement
 
-DELETE  /requirements/id:                                    controllers.Requirements.deleteRequirement(id:Long)
+DELETE  /requirements/:id                                    controllers.Requirements.deleteRequirement(id:Long)
 
 #Map skills
 
