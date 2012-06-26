@@ -8,18 +8,18 @@
 package controllers
 
 import play.api.mvc.{Controller, Action}
-import play.api.libs.json.{Json, JsValue}
+import play.api.libs.json.{ Json, JsValue}
 import models.Requirement
-import java.util.Date
+
 import com.codahale.jerkson.Json._
 
-
+import changeFormat._
 object Requirements extends Controller{
 
   /* POST */
   def postRequirement=Action(parse.json){request=>
     (request.body).asOpt[JsValue].map{requirement=>
-      val requirementId=Requirement.addRequirement(Requirement((requirement\"projectId").as[Long],(requirement\"contactId").as[Long],(requirement\"fillBy").as[Date],(requirement\"priority").as[String],(requirement\"category").as[String]));
+      val requirementId=Requirement.addRequirement(Requirement((requirement\"projectId").as[Long],(requirement\"contactId").as[Long],JsonDateFormatter.DateFormat.reads(requirement\"fillBy"),(requirement\"priority").as[String],(requirement\"category").as[String]));
       Ok(Json.stringify(
         Json.toJson(Map("id" -> requirementId))
       ))}.getOrElse{

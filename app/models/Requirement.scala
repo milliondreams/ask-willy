@@ -14,13 +14,13 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
-case class Requirement(projectId:Long,contactId:Long,fillBy:Date,priority:String,category:String)
+case class Requirement(projectId:Long,contactId:Long,fillBy:Option[Date],priority:String,category:String)
 object Requirement {
 
   def simple={
     get[Long]("project_id")~
     get[Long]("contact_id")~
-    get[Date]("fill_by")~
+    get[Option[Date]]("fill_by")~
     get[String]("priority")~
     get[String]("category")map{
       case project_id~contact_id~fill_by~priority~category=>Requirement(project_id,contact_id,fill_by,priority,category)

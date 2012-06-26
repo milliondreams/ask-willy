@@ -15,6 +15,14 @@ GET     /people/:emailId                  controllers.People.getPersonByEmail(em
 
 GET     /people/:id                       controllers.People.getPersonById(id:Long)
 
+GET     /people/:id/skills                 controllers.People.getPersonSkill(id:Long)
+
+GET     /people/:id/qualifications                 controllers.People.getQualification(id:Long)
+
+GET     /people/:id/managers                 controllers.People.getPersonManagers(id:Long)
+
+GET     /people/:id/employment                 controllers.People.getEmploymentRec(id:Long)
+
 POST    /people                           controllers.People.postPerson
 
 POST    /people/:id/skill                controllers.People.postSkill(id:Long)

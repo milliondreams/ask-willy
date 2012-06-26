@@ -12,12 +12,11 @@ import play.api._
 import libs.json.JsValue
 import play.api.libs.json.Json
 
-import java.util.Date
-
 import com.codahale.jerkson.Json._
 
 import models._
 
+import changeFormat._
 
 object People extends Controller{
 
@@ -66,7 +65,7 @@ object People extends Controller{
   def postEmployment(personId:Long)=Action(parse.json){request=>
     (request.body).asOpt[JsValue].map{employment=>
 
-      val prevEmpId=EmploymentRecords.addEmploymentRecord(EmploymentRecords((employment\"company").toString(),(employment\"start").as[Date],(employment\"end").as[Date],(employment\"designation").toString(),personId));
+      val prevEmpId=EmploymentRecords.addEmploymentRecord(EmploymentRecords((employment\"company").toString(),JsonDateFormatter.DateFormat.reads(employment\"start"),JsonDateFormatter.DateFormat.reads(employment\"end"),(employment\"designation").toString(),personId));
       Ok(Json.stringify(
         Json.toJson(Map("EmploymentRecordId" -> prevEmpId))
       ))}.getOrElse{
@@ -113,6 +112,32 @@ object People extends Controller{
   def getPersonById(personId:Long)=Action{
       val person=Person.findPersonById(personId)
       Ok(generate(person))
+  }
+
+  //may need to map to skills table and then show the data
+  /* GET person specific skill*/
+  def getPersonSkill(personId:Long)=Action{
+    val skill=PeopleSkills.getSkills(personId)
+    Ok(generate(skill))
+  }
+
+  /* GET person specific Employment Record*/
+  def getEmploymentRec(personId:Long)=Action{
+    val empRec=EmploymentRecords.getEmploymentRecord(personId)
+    Ok(generate(empRec))
+  }
+
+  //may need to map to managers table and then show the data
+  /* GET persons managers */
+  def getPersonManagers(personId:Long)=Action{
+    val managers=PeopleManagers.getManagers(personId)
+    Ok(generate(managers))
+  }
+
+  /* GET person specific qualification records*/
+  def getQualification(personId:Long)=Action{
+    val qualifications=QualificationRecords.getQualification(personId)
+    Ok(generate(qualifications))
   }
 
   /* DELETE */

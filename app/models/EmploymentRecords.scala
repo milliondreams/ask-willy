@@ -14,14 +14,14 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
-case class EmploymentRecords(companyName:String,start:Date,end:Date,designation:String,personId:Long)
+case class EmploymentRecords(companyName:String,start:Option[Date],end:Option[Date],designation:String,personId:Long)
 
 object EmploymentRecords{
 
   def simple={
     get[String]("name")~
-    get[Date]("start")~
-    get[Date]("end")~
+    get[Option[Date]]("start")~
+    get[Option[Date]]("end")~
     get[String]("designation")~
     get[Long]("person_id")map{
       case name~start~end~designation~person_id=>EmploymentRecords(name,start,end,designation,person_id)

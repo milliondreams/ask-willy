@@ -37,5 +37,14 @@ object PeopleManagers{
     }
   }
 
+  def getManagers(personId:Long):Seq[PeopleManagers]={
+    DB.withConnection{implicit connection=>
+      SQL("SELECT person_id,manager_id,current FROM people_managers WHERE person_id={person_id}")
+      .on(
+      'person_id->personId
+      ).as(PeopleManagers.simple *)
+    }
+  }
+
 
 }
