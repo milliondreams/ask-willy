@@ -28,7 +28,7 @@ Model.Person=Backbone.Model.extend({
 })
 
 //Person Collection
-Model.People=Backbone.Collection.extend({
+Model.PersonList=Backbone.Collection.extend({
     url:"/people",
 
     //Reference to this collections model
