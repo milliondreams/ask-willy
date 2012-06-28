@@ -90,8 +90,6 @@ CREATE TABLE `people` (
   `gender` enum('MALE','FEMALE') DEFAULT NULL,
   `experience` decimal(3,1) DEFAULT NULL,
   `available` tinyint(1) NOT NULL,
-  `short_resume` text,
-  `formal_resume` blob,
   `location` varchar(45) DEFAULT NULL,
   `employee` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
