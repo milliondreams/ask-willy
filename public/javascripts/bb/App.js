@@ -23,7 +23,6 @@ $(function(){
         return result;
     };
 
-    Model.P=new Model.Person
     Model.People=new Model.PersonList;
     window.View=new Object();
 
@@ -32,7 +31,7 @@ $(function(){
         designation:ko.observable(''),
         email:ko.observable(''),
         possible_genders:ko.observableArray(['MALE','FEMALE']),
-        gender:ko.observable(''),
+        gender:ko.observable('MALE'),
         location:ko.observable(''),
         experience:ko.numericObservable(0),
         onAdd:function(){
@@ -40,7 +39,7 @@ $(function(){
             this.name('');
             this.designation('');
             this.email('');
-            this.gender('');
+            this.gender('MALE');
             this.location('');
         }
     }
