@@ -13,7 +13,7 @@ Model.Skill=Backbone.Model.extend({
 
 //Skill Collection
 Model.Skills=Backbone.Collection.extend({
-    url:"/skills",
+    url:"/api/skills",
 
     //Reference to this collections model
     model:Model.Skill

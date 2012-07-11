@@ -13,7 +13,7 @@ Model.Project=Backbone.Model.extend({
 
 //Project Collection
 Model.ProjectList=Backbone.Collection.extend({
-    url:"/people",
+    url:"/api/people",
     //Reference to this collections model
     model:Model.People
 

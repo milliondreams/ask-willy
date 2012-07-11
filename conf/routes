@@ -9,72 +9,72 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Map people operations
-GET     /people                           controllers.People.getAllPeople
+GET     /api/people                           controllers.People.getAllPeople
 
-GET     /people/:emailId                  controllers.People.getPersonByEmail(emailId:String)
+GET     /api/people/:emailId                  controllers.People.getPersonByEmail(emailId:String)
 
-GET     /people/:id                       controllers.People.getPersonById(id:Long)
+GET     /api/people/:id                       controllers.People.getPersonById(id:Long)
 
-GET     /people/:id/skills                 controllers.People.getPersonSkill(id:Long)
+GET     /api/people/:id/skills                 controllers.People.getPersonSkill(id:Long)
 
-GET     /people/:id/qualifications                 controllers.People.getQualification(id:Long)
+GET     /api/people/:id/qualifications                 controllers.People.getQualification(id:Long)
 
-GET     /people/:id/managers                 controllers.People.getPersonManagers(id:Long)
+GET     /api/people/:id/managers                 controllers.People.getPersonManagers(id:Long)
 
-GET     /people/:id/employment                 controllers.People.getEmploymentRec(id:Long)
+GET     /api/people/:id/employment                 controllers.People.getEmploymentRec(id:Long)
 
-POST    /people                           controllers.People.postPerson
+POST    /api/people                           controllers.People.postPerson
 
-POST    /people/:id/skill                controllers.People.postSkill(id:Long)
+POST    /api/people/:id/skill                controllers.People.postSkill(id:Long)
 
-POST    /people/:id/qualification                controllers.People.postQualification(id:Long)
+POST    /api/people/:id/qualification                controllers.People.postQualification(id:Long)
 
-POST    /people/:id/employment                controllers.People.postEmployment(id:Long)
+POST    /api/people/:id/employment                controllers.People.postEmployment(id:Long)
 
-POST    /people/:id/manager                controllers.People.postManagerDetails(id:Long)
+POST    /api/people/:id/manager                controllers.People.postManagerDetails(id:Long)
 
-DELETE  /people/:id                       controllers.People.deletePerson(id:Long)
+DELETE  /api/people/:id                       controllers.People.deletePerson(id:Long)
 
 #Map project operations
 
-GET     /project                                   controllers.Projects.getAllProjects
+GET     /api/project                                   controllers.Projects.getAllProjects
 
-GET     /project/active                                   controllers.Projects.getAllActiveProjects
+GET     /api/project/active                                   controllers.Projects.getAllActiveProjects
 
-GET     /project/closed                                   controllers.Projects.getAllClosedProjects
+GET     /api/project/closed                                   controllers.Projects.getAllClosedProjects
 
-GET     /project/pipeline                                   controllers.Projects.getAllPipelinedProjects
+GET     /api/project/pipeline                                   controllers.Projects.getAllPipelinedProjects
 
-GET     /project/:name                                      controllers.Projects.getProjectByName(name:String)
+GET     /api/project/:name                                      controllers.Projects.getProjectByName(name:String)
 
-GET     /project/:id                                      controllers.Projects.getProjectById(id:Long)
+GET     /api/project/:id                                      controllers.Projects.getProjectById(id:Long)
 
-POST    /project                                            controllers.Projects.postProject
+POST    /api/project                                            controllers.Projects.postProject
 
-DELETE  /project/:id                                        controllers.Projects.deleteProject(id:Long)
+DELETE  /api/project/:id                                        controllers.Projects.deleteProject(id:Long)
 
 #Map requirement operations
 
-GET     /requirements                                       controllers.Requirements.getAllReq
+GET     /api/requirements                                       controllers.Requirements.getAllReq
 
-GET     /requirements/priority/crucial                                       controllers.Requirements.getCrucialReq
+GET     /api/requirements/priority/crucial                                       controllers.Requirements.getCrucialReq
 
-GET     /requirements/priority/normal                                       controllers.Requirements.getNormalReq
+GET     /api/requirements/priority/normal                                       controllers.Requirements.getNormalReq
 
-GET     /requirements/priority/low                                       controllers.Requirements.getLowReq
+GET     /api/requirements/priority/low                                       controllers.Requirements.getLowReq
 
-GET     /requirements/category/billed                                      controllers.Requirements.getBilledReq
+GET     /api/requirements/category/billed                                      controllers.Requirements.getBilledReq
 
-GET     /requirements/category/shadow                                       controllers.Requirements.getShadowReq
+GET     /api/requirements/category/shadow                                       controllers.Requirements.getShadowReq
 
-GET     /requirements/category/pitch                                       controllers.Requirements.getPitchReq
+GET     /api/requirements/category/pitch                                       controllers.Requirements.getPitchReq
 
-GET     /requirements/category/tentative                                       controllers.Requirements.getTentativeReq
+GET     /api/requirements/category/tentative                                       controllers.Requirements.getTentativeReq
 
-POST    /requirements                                       controllers.Requirements.postRequirement
+POST    /api/requirements                                       controllers.Requirements.postRequirement
 
-DELETE  /requirements/:id                                    controllers.Requirements.deleteRequirement(id:Long)
+DELETE  /api/requirements/:id                                    controllers.Requirements.deleteRequirement(id:Long)
 
 #Map skills
 
-POST    /skills                                             controllers.Skills.postSkill
+POST    /api/skills                                             controllers.Skills.postSkill

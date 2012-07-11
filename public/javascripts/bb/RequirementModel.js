@@ -13,7 +13,7 @@ Model.Requirement=Backbone.Model.extend({
 
 //Requirement Collection
 Model.RequirementList=Backbone.Collection.extend({
-    url:"/requirements",
+    url:"/api/requirements",
 
     //Reference to this collections model
     model:Model.Requirement
