@@ -24,7 +24,6 @@ $(function(){
     };
 
     Model.People=new Model.PersonList;
-    Model.PrevEmp=new Model.EmploymentRec;
     window.View=new Object();
 
     View.View_Person={
@@ -40,9 +39,10 @@ $(function(){
         endDate:ko.observable(new Date()),
         prevDesignation:ko.observable(''),
         onAdd:function(){
-            Model.People.create({name:this.name(),designation:this.designation(),email:this.email(),gender:this.gender(),location:this.location(),experience:this.experience(),empRec:new Backbone.Collection()});
-            var ref=(Model.People.where({email:this.email()})).get('empRec');
-            var empRec=Model.PrevEmp.set({name:this.prevCompany(),startDate:this.startDate(),endDate:this.endDate(),designation:this.prevDesignation()});
+            var p= new Model.Person({name:this.name(),designation:this.designation(),email:this.email(),gender:this.gender(),location:this.location(),experience:this.experience(),empRec:new Backbone.Collection()});
+            Model.People.create(p);
+            var ref= p.get('empRec');
+            var empRec=new Model.EmploymentRec({name:this.prevCompany(),startDate:this.startDate(),endDate:this.endDate(),designation:this.prevDesignation()});
             ref.add(empRec);
             this.name('');
             this.designation('');

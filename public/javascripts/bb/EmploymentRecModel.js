@@ -9,3 +9,8 @@
 Model.EmploymentRec=Backbone.RelationalModel.extend({
 
 })
+//
+//Model.EmpRecList-Backbone.Collection.extend({
+//    model:Model.EmploymentRec,
+//    url:'/api/people/:id/employment'
+//})
