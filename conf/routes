@@ -11,29 +11,19 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # Map people operations
 GET     /api/people                           controllers.People.getAllPeople
 
-GET     /api/people/:emailId                  controllers.People.getPersonByEmail(emailId:String)
+GET     /api/people/:emailId                  controllers.People.getPersonByEmail(emailId)
 
-GET     /api/people/:id                       controllers.People.getPersonById(id:Long)
-
-GET     /api/people/:id/skills                 controllers.People.getPersonSkill(id:Long)
-
-GET     /api/people/:id/qualifications                 controllers.People.getQualification(id:Long)
-
-GET     /api/people/:id/managers                 controllers.People.getPersonManagers(id:Long)
-
-GET     /api/people/:id/employment                 controllers.People.getEmploymentRec(id:Long)
+GET     /api/people/                       controllers.People.getPersonById(id:Long)
 
 POST    /api/people                           controllers.People.postPerson
 
-POST    /api/people/:id/skill                controllers.People.postSkill(id:Long)
+DELETE  /api/people/                     controllers.People.deletePerson(id:Long)
 
-POST    /api/people/:id/qualification                controllers.People.postQualification(id:Long)
+#Map employmentRecord
+GET     /api/employment/                  controllers.Employment.getEmploymentRec(id:Long)
 
-POST    /api/people/:id/employment                controllers.People.postEmployment(id:Long)
+POST    /api/employment/                     controllers.Employment.postEmpRec
 
-POST    /api/people/:id/manager                controllers.People.postManagerDetails(id:Long)
-
-DELETE  /api/people/:id                       controllers.People.deletePerson(id:Long)
 
 #Map project operations
 

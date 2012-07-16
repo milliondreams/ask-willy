@@ -6,11 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Model.EmploymentRec=Backbone.RelationalModel.extend({
+Model.EmploymentRec=Backbone.Model.extend({
+
+});
+
+Model.EmpRecList=Backbone.Collection.extend({
+    url:"/api/employment",
+    model:Model.EmploymentRec
 
 })
-//
-//Model.EmpRecList-Backbone.Collection.extend({
-//    model:Model.EmploymentRec,
-//    url:'/api/people/:id/employment'
-//})

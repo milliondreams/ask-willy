@@ -24,6 +24,7 @@ $(function(){
     };
 
     Model.People=new Model.PersonList;
+    Model.EmpRec=new Model.EmpRecList;
     window.View=new Object();
 
     View.View_Person={
@@ -42,8 +43,10 @@ $(function(){
             var p= new Model.Person({name:this.name(),designation:this.designation(),email:this.email(),gender:this.gender(),location:this.location(),experience:this.experience(),empRec:new Backbone.Collection()});
             Model.People.create(p);
             var ref= p.get('empRec');
-            var empRec=new Model.EmploymentRec({name:this.prevCompany(),startDate:this.startDate(),endDate:this.endDate(),designation:this.prevDesignation()});
+            var id=p.get('id');
+            var empRec=new Model.EmploymentRec({personId:id,name:this.prevCompany(),startDate:this.startDate(),endDate:this.endDate(),designation:this.prevDesignation()});
             ref.add(empRec);
+            Model.EmpRec.create(empRec);
             this.name('');
             this.designation('');
             this.email('');
