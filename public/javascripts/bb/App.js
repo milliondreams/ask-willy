@@ -36,16 +36,16 @@ $(function(){
         location:ko.observable(''),
         experience:ko.numericObservable(0),
         prevCompany:ko.observable(''),
-        startDate:ko.observable(new Date()),
-        endDate:ko.observable(new Date()),
+        startDate:ko.observable(''),
+        endDate:ko.observable(''),
         prevDesignation:ko.observable(''),
         onAdd:function(){
             var p= new Model.Person({name:this.name(),designation:this.designation(),email:this.email(),gender:this.gender(),location:this.location(),experience:this.experience(),empRec:new Backbone.Collection()});
             Model.People.create(p);
             var ref= p.get('empRec');
             var id=p.get('id');
-            var empRec=new Model.EmploymentRec({personId:id,name:this.prevCompany(),startDate:this.startDate(),endDate:this.endDate(),designation:this.prevDesignation()});
-            ref.add(empRec);
+            var empRec=new Model.EmploymentRec({personId:id,name:this.prevCompany(),start:this.startDate(),end:this.endDate(),designation:this.prevDesignation()});
+//            ref.add(empRec);
             Model.EmpRec.create(empRec);
             this.name('');
             this.designation('');

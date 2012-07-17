@@ -19,7 +19,7 @@ object Employment extends Controller{
   def postEmpRec=Action(parse.json){request=>
     (request.body).asOpt[JsValue].map{employment=>
 
-      val prevEmpId=EmploymentRecords.addEmploymentRecord(EmploymentRecords((employment\"company").toString(),JsonDateFormatter.DateFormat.reads(employment\"start"),JsonDateFormatter.DateFormat.reads(employment\"end"),(employment\"designation").toString(),(employment\"personId").as[Long]));
+      val prevEmpId=EmploymentRecords.addEmploymentRecord(EmploymentRecords((employment\"name").toString(),JsonDateFormatter.DateFormat.reads(employment\"start"),JsonDateFormatter.DateFormat.reads(employment\"end"),(employment\"designation").toString(),(employment\"personId").as[Long]));
       Ok(Json.stringify(
         Json.toJson(Map("id" -> prevEmpId))
       ))}.getOrElse{

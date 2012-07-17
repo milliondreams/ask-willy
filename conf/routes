@@ -13,16 +13,18 @@ GET     /api/people                           controllers.People.getAllPeople
 
 GET     /api/people/:emailId                  controllers.People.getPersonByEmail(emailId)
 
-GET     /api/people/                       controllers.People.getPersonById(id:Long)
+GET     /api/people                       controllers.People.getPersonById(id:Long)
 
 POST    /api/people                           controllers.People.postPerson
 
-DELETE  /api/people/                     controllers.People.deletePerson(id:Long)
+DELETE  /api/people                     controllers.People.deletePerson(id:Long)
 
 #Map employmentRecord
-GET     /api/employment/                  controllers.Employment.getEmploymentRec(id:Long)
 
-POST    /api/employment/                     controllers.Employment.postEmpRec
+
+GET     /api/employment                 controllers.Employment.getEmploymentRec(id:Long)
+
+POST    /api/employment                     controllers.Employment.postEmpRec
 
 
 #Map project operations

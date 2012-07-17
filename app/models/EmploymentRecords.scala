@@ -28,7 +28,7 @@ object EmploymentRecords{
     }
   }
 
-  def addEmploymentRecord(empRecord:EmploymentRecords):Boolean={
+  def addEmploymentRecord(empRecord:EmploymentRecords):Option[Long]={
     DB.withConnection{implicit connection=>
       SQL("INSERT INTO employment_record(name,start,end,designation,person_id) VALUES({name},{start},{end},{designation},{person_id})")
         .on(
@@ -37,7 +37,7 @@ object EmploymentRecords{
         'end->empRecord.end,
         'designation->empRecord.designation,
         'person_id->empRecord.personId
-      ).execute()
+      ).executeInsert()
     }
   }
 
