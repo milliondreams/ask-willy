@@ -45,15 +45,17 @@ $(function(){
             var ref= p.get('empRec');
             var id=p.get('id');
             var empRec=new Model.EmploymentRec({personId:id,name:this.prevCompany(),start:this.startDate(),end:this.endDate(),designation:this.prevDesignation()});
-//            ref.add(empRec);
             Model.EmpRec.create(empRec);
-            this.name('');
-            this.designation('');
-            this.email('');
-            this.gender('MALE');
-            this.location('');
+            p.set('empRec',empRec);
+
         }
     }
 
-    ko.applyBindings(View.View_Person);
+//    ko.applyBindings(View.View_Person);
+
+    function viewModel(){
+        this.people=Model.People.fetch();
+
+    }
+    ko.applyBindings(new viewModel(),document.getElementById('displayPeople'));
 });

@@ -4,27 +4,11 @@
 <script src="@routes.Assets.at("javascripts/bb/EmploymentRecModel.js")" type="text/javascript"></script>
 <script src="@routes.Assets.at("javascripts/bb/App.js")" type="text/javascript"></script>
 
-<!-- Add Person Form-->
-<div id="addPerson">
-        <div class="title">
-        <h1>Add New Person</h1>
+
+        <div id="displayPeople" data-bind="template:{name:'template-person',foreach:people}"></div>
+<script type="text/template" id="template-person">
+        <div class="person">
+            < p><span data-bind="text:name"></span></p>
         </div>
-
-        <div id='person_form'>
-        <p>Name: <input type="text" data-bind="value: name" /></p>
-        <p>Designation: <input type="text" data-bind="value:designation " /></p>
-        <p>Email: <input type="email" data-bind="value:email" /></p>
-        <p>Gender: <select data-bind="options:possible_genders,value: gender" class="dropdown-toggle" ></select></p>
-        <p>Experience: <input type="number" data-bind="value: experience" /></p>
-        <p>Location: <input type="text" data-bind="value: location" /></p>
-
-        <p>Company: <input type="text" data-bind="value: prevCompany" /></p>
-        <p>Designation in above company: <input type="text" data-bind="value:prevDesignation " /></p>
-        <p>From: <input type="text" data-bind="value: startDate" /></p>
-        <p>Until: <input type="text" data-bind="value: endDate" /></p>
-
-        </div>
-        <button data-bind="click: onAdd">Add</button>
-</div>
-
+</script>
 }

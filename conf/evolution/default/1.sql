@@ -33,7 +33,7 @@ CREATE TABLE  people  (
    email  varchar(150) NOT NULL,
    designation  varchar(45) DEFAULT NULL,
    gender  enum('MALE','FEMALE') DEFAULT NULL,
-   experience  decimal(3,1) DEFAULT NULL,
+   experience  double(3,1) DEFAULT NULL,
    available  tinyint(1) NOT NULL,
    location  varchar(45) DEFAULT NULL,
    employee  tinyint(1) NOT NULL,
