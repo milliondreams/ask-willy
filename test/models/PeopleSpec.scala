@@ -15,7 +15,7 @@ import utils.MyHelpers
 import org.h2.tools.Server;
 
 class PeopleSpec extends Specification{
-  val person:People = People(id = 1,
+  val person:Person = Person(
     name = "test",
     email="test@test.com",
     designation = "Dev Engineer",
@@ -25,7 +25,7 @@ class PeopleSpec extends Specification{
     location = "hyderabad",
     employee = true
   )
-  "People person " should {
+  "Person person " should {
 
     "have a name as test" in {
        person.name must beEqualTo("test")
@@ -39,7 +39,7 @@ class PeopleSpec extends Specification{
         def server:Server  = Server.createTcpServer("-tcpAllowOthers").start();
         MyHelpers.evolutionFor("default")
 
-         def result = People.addPerson(person) must beEqualTo(1)
+         def result = Person.addPerson(person) must beEqualTo(1)
 
         server.stop();
         // stop the TCP Server

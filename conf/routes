@@ -70,3 +70,5 @@ DELETE  /api/requirements/:id                                    controllers.Req
 #Map skills
 
 POST    /api/skills                                             controllers.Skills.postSkill
+
+POST    /api/:name                           controllers.Common.postCommon(name)
